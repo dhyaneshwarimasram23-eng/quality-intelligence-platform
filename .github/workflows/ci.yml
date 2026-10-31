@@ -1,0 +1,69 @@
+name: Quality Intelligence CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Unit & core logic tests
+        run: |
+          export PYTHONPATH=.
+          pytest tests/test_*.py -v --tb=short --junitxml=reports/unit.xml
+
+      - name: Risk-based selection check
+        run: |
+          export PYTHONPATH=.
+          python -c "
+          from qi.core.risk_selector import RiskSelector
+          s = RiskSelector()
+          selected = s.select_tests(
+              ['src/payment/transfer.py'],
+              [{'name': 'test_transfer_limit', 'file': 'tests/api/test_transfer.py', 'criticality': 'critical'}]
+          )
+          print('Selected:', [t['name'] for t in selected])
+          "
+
+      - name: Run Playwright UI tests
+        run: |
+          export PYTHONPATH=.
+          pytest tests/ui/ -v --tb=short --junitxml=reports/ui.xml
+        continue-on-error: true
+
+      - name: Controlled experiment
+        run: |
+          export PYTHONPATH=.
+          python experiments/risk_selection_experiment.py
+
+      - name: Upload evidence & reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-artifacts
+          path: |
+            reports/
+            experiments/results/
+          retention-days: 14

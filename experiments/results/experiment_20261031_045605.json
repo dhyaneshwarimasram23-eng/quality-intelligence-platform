@@ -1,0 +1,78 @@
+[
+  {
+    "scenario": "Payment limit bug",
+    "commit": "a1b2c3d",
+    "full": {
+      "tests_run": 7,
+      "duration_sec": 0.0703,
+      "caught": [
+        "test_transfer_limit",
+        "test_transfer_success"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "risk": {
+      "tests_run": 4,
+      "duration_sec": 0.0402,
+      "caught": [
+        "test_transfer_limit",
+        "test_transfer_success"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "runtime_ratio": 0.572,
+    "test_reduction": 0.429
+  },
+  {
+    "scenario": "Login validation change",
+    "commit": "e4f5g6h",
+    "full": {
+      "tests_run": 7,
+      "duration_sec": 0.071,
+      "caught": [
+        "test_login"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "risk": {
+      "tests_run": 4,
+      "duration_sec": 0.0404,
+      "caught": [
+        "test_login"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "runtime_ratio": 0.569,
+    "test_reduction": 0.429
+  },
+  {
+    "scenario": "Dashboard + profile regression",
+    "commit": "i7j8k9l",
+    "full": {
+      "tests_run": 7,
+      "duration_sec": 0.0704,
+      "caught": [
+        "test_dashboard",
+        "test_profile"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "risk": {
+      "tests_run": 7,
+      "duration_sec": 0.0703,
+      "caught": [
+        "test_dashboard",
+        "test_profile"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "runtime_ratio": 0.999,
+    "test_reduction": 0.0
+  }
+]

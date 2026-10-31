@@ -1,0 +1,1 @@
+from pathlib import Path\nPath("qi/core/evidence_collector.py").write_text(open("evidence_content.txt",encoding="utf-8").read(),encoding="utf-8")\nprint("evidence_collector.py fixed")
