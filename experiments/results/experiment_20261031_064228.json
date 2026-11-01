@@ -1,0 +1,104 @@
+[
+  {
+    "scenario": "Payment limit bug",
+    "commit": "a1b2c3d",
+    "full": {
+      "tests_run": 42,
+      "duration_sec": 75.6,
+      "caught": [
+        "test_transfer_limit",
+        "test_transfer_success"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "risk": {
+      "tests_run": 6,
+      "duration_sec": 10.8,
+      "caught": [
+        "test_transfer_limit",
+        "test_transfer_success"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "test_reduction": 0.857,
+    "time_saved_sec": 64.8
+  },
+  {
+    "scenario": "Login + session validation change",
+    "commit": "e4f5g6h",
+    "full": {
+      "tests_run": 42,
+      "duration_sec": 75.6,
+      "caught": [
+        "test_login",
+        "test_session_timeout"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "risk": {
+      "tests_run": 6,
+      "duration_sec": 10.8,
+      "caught": [
+        "test_login",
+        "test_session_timeout"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "test_reduction": 0.857,
+    "time_saved_sec": 64.8
+  },
+  {
+    "scenario": "Dashboard + profile regression",
+    "commit": "i7j8k9l",
+    "full": {
+      "tests_run": 42,
+      "duration_sec": 75.6,
+      "caught": [
+        "test_dashboard",
+        "test_profile"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "risk": {
+      "tests_run": 10,
+      "duration_sec": 18.0,
+      "caught": [
+        "test_dashboard",
+        "test_profile"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "test_reduction": 0.762,
+    "time_saved_sec": 57.6
+  },
+  {
+    "scenario": "Refund flow change",
+    "commit": "m1n2o3p",
+    "full": {
+      "tests_run": 42,
+      "duration_sec": 75.6,
+      "caught": [
+        "test_refund_flow"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "risk": {
+      "tests_run": 6,
+      "duration_sec": 10.8,
+      "caught": [
+        "test_refund_flow"
+      ],
+      "missed": [],
+      "detection_rate": 1.0
+    },
+    "test_reduction": 0.857,
+    "time_saved_sec": 64.8
+  }
+]
